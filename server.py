@@ -1,4 +1,5 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
+import json
 
 app = Flask(__name__)
 
@@ -31,6 +32,13 @@ def get_task(task_id):
     if len(task) == 0:
         abort(404)
     return jsonify({'task': task[0]})
+
+
+@app.route('/courses', methods=['GET'])
+def get_courses():
+    with open('courses.json') as courses_json_file:
+        data = json.load(courses_json_file)
+        return jsonify(data)
 
 if __name__ == '__main__':
     app.run()

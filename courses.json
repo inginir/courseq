@@ -1,0 +1,442 @@
+[
+  {
+    "code": "ENGR242",
+    "name": "Statics",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["PHYS204", "MATH204"],
+    "coreqs": ["ENGR213"]
+  },
+  {
+    "code": "ENGR243",
+    "name": "Dynamics",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["ENGR213", "ENGR242"],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR244",
+    "name": "Mechanics of Materials",
+    "credits": 3.75,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["ENGR213", "ENGR242"],
+    "coreqs": ["ENGR233"]
+  },
+  {
+    "code": "ENGR251",
+    "name": "Thermodynamics I",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MATH203"],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR201",
+    "name": "Professional Practice and Responsibility",
+    "credits": 1.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR202",
+    "name": "Sustainable Development and Environmental Stewardship",
+    "credits": 1.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR213",
+    "name": "Applied Ordinary Differential Equations",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MATH205"],
+    "coreqs": ["MATH204"]
+  },
+  {
+    "code": "ENGR233",
+    "name": "Applied Advanced Calculus",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MATH204", "MATH205"],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR301",
+    "name": "Engineering Management Principles and Economics",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR311",
+    "name": "Transform Calculus and Partial Differential Equations",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR213", "ENGR233"],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR361",
+    "name": "Fluid Mechanics I",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR213", "ENGR233", "ENGR251"],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR371",
+    "name": "Probability and Statistics in Engineering",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR213", "ENGR233"],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR391",
+    "name": "Numerical Methods in Engineering",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR213", "ENGR233", "MECH215"],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR392",
+    "name": "Impact of Technology on Society",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENCS282", "ENGR201", "MECH202"],
+    "coreqs": []
+  },
+  {
+    "code": "ENGR472",
+    "name": "Robot Manipulators",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MECH371"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH211",
+    "name": "Mechanical Engineering Drawing",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MECH215",
+    "name": "Programming for Mechanical and Industrial Engineers",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MATH204"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH221",
+    "name": "Materials Science",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["CHEM205"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH311",
+    "name": "Manufacturing Processes",
+    "credits": 3.75,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MECH313"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH313",
+    "name": "Machine Drawing and Design",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MECH211"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH321",
+    "name": "Properties and Failure of Materials",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MECH221"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH343",
+    "name": "Theory of Machines",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR213", "ENGR233", "ENGR243"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH344",
+    "name": "Machine Element Design",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR244", "MECH313", "MECH321"],
+    "coreqs": ["MECH343"]
+  },
+  {
+    "code": "MECH351",
+    "name": "Thermodynamics II",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR251"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH352",
+    "name": "Heat Transfer I",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR311", "ENGR361"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH361",
+    "name": "Fluid Mechanics II",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR361"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH368",
+    "name": "Electronics for Mechanical Engineers",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["PHYS205"],
+    "coreqs": ["ENGR311"]
+  },
+  {
+    "code": "MECH368",
+    "name": "Modelling and Analysis of Dynamic Systems",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["PHYS205", "ENGR213"],
+    "coreqs": ["ENGR311"]
+  },
+  {
+    "code": "MECH371",
+    "name": "Analysis and Design of Control Systems",
+    "credits": 3.75,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENGR311", "MECH370"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH375",
+    "name": "Mechanical Vibrations",
+    "credits": 3.5,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MECH370"],
+    "coreqs": []
+  },
+  {
+    "code": "MECH390",
+    "name": "Mechanical Engineering Design Project",
+    "credits": 3,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["ENCS282", "MECH311", "MECH343"],
+    "coreqs": ["MECH344"]
+  },
+  {
+    "code": "MECH474",
+    "name": "Mechatronics",
+    "credits": 3.75,
+    "seasons": ["Fall", "Winter", "Summer"],
+    "prereqs": ["MECH371"],
+    "coreqs": []
+  },
+  {
+    "code": "MATH200",
+    "name": "MATH200",
+    "credits": 3,
+    "seasons": ["Summer", "Fall"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH201",
+    "name": "MATH201",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": [],
+    "coreqs": ["MATH200"]
+  },
+  {
+    "code": "MATH202",
+    "name": "MATH202",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["MATH200"],
+    "coreqs": ["MATH201"]
+  },
+  {
+    "code": "MATH203",
+    "name": "MATH203",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["MATH200"],
+    "coreqs": ["MATH201"]
+  },
+  {
+    "code": "MATH204",
+    "name": "MATH204",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["MATH200"],
+    "coreqs": ["MATH201"]
+  },
+  {
+    "code": "MATH205",
+    "name": "MATH205",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["MATH200"],
+    "coreqs": ["MATH202"]
+  },
+  {
+    "code": "MATH206",
+    "name": "MATH206",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["MATH200"],
+    "coreqs": ["MATH202"]
+  },
+  {
+    "code": "MATH207",
+    "name": "MATH207",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": ["MATH200"],
+    "coreqs": ["MATH202"]
+  },
+  {
+    "code": "MATH208",
+    "name": "MATH208",
+    "credits": 3,
+    "seasons": ["Summer", "Fall"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH209",
+    "name": "MATH209",
+    "credits": 3,
+    "seasons": ["Summer"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH210",
+    "name": "MATH210",
+    "credits": 3,
+    "seasons": ["Summer", "Fall"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH211",
+    "name": "MATH211",
+    "credits": 3,
+    "seasons": ["Summer", "Winter"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH212",
+    "name": "MATH212",
+    "credits": 3,
+    "seasons": ["Summer"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH213",
+    "name": "MATH213",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH214",
+    "name": "MATH214",
+    "credits": 3,
+    "seasons": ["Summer"],
+    "prereqs": ["MATH201"],
+    "coreqs": []
+  },
+  {
+    "code": "MATH215",
+    "name": "MATH215",
+    "credits": 3,
+    "seasons": ["Summer"],
+    "prereqs": ["MATH201"],
+    "coreqs": []
+  },
+  {
+    "code": "MATH216",
+    "name": "MATH216",
+    "credits": 3,
+    "seasons": ["Summer"],
+    "prereqs": ["MATH201"],
+    "coreqs": []
+  },
+  {
+    "code": "MATH217",
+    "name": "MATH217",
+    "credits": 3,
+    "seasons": ["Summer"],
+    "prereqs": ["MATH201"],
+    "coreqs": []
+  },
+  {
+    "code": "MATH218",
+    "name": "MATH218",
+    "credits": 3,
+    "seasons": ["Summer"],
+    "prereqs": ["MATH201"],
+    "coreqs": []
+  },
+  {
+    "code": "MATH219",
+    "name": "MATH219",
+    "credits": 3,
+    "seasons": ["Fall", "Summer"],
+    "prereqs": ["MATH201"],
+    "coreqs": []
+  },
+  {
+    "code": "MATH220",
+    "name": "MATH220",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH221",
+    "name": "MATH221",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": [],
+    "coreqs": []
+  },
+  {
+    "code": "MATH222",
+    "name": "MATH222",
+    "credits": 3,
+    "seasons": ["Fall", "Winter"],
+    "prereqs": [],
+    "coreqs": []
+  }
+]
