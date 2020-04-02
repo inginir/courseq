@@ -19,7 +19,6 @@ services:
       - .env
     environment:
       - REACT_APP_PORT=${REACT_APP_PORT}
-      # - REACT_APP_API_ENDPOINT=http://localhost:${SERVER_PORT}/
       - REACT_APP_API_ENDPOINT=http://localhost:${SERVER_PORT}/
     expose:
       - ${REACT_APP_PORT}

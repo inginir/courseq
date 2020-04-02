@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "serve": "source ../.env; serve -s build -l ${REACT_APP_PORT}",
+    "serve": "serve -s build -l ${REACT_APP_PORT}",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
