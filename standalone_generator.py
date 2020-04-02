@@ -2,8 +2,8 @@ import functools
 import random
 import json
 
-NO_OF_RETRIES = 150
-NO_OF_FAILURES = 150
+NO_OF_RETRIES = 20
+NO_OF_FAILURES = 20
 DEFAULT_CREDIT_LIMIT = 12
 
 seasons = ("Fall", "Winter", "Summer")
@@ -11,6 +11,9 @@ seasons = ("Fall", "Winter", "Summer")
 FALL = seasons[0]
 WINTER = seasons[1]
 SUMMER = seasons[2]
+
+def tst_fn():
+    print('tst_fn works')
 
 def get_tuper_circularly (tup, i):
     return tup[i%len(tup)]        
@@ -23,22 +26,34 @@ def get_term_key(season, year):
 
 
 class Course:
-  def __init__ (self,  code, name,credits, prereqs=[], coreqs=[], season_availability=[FALL, WINTER]):
-    self.name = name
-    self.code = code
-    self.prereqs = prereqs
-    self.coreqs = coreqs
-    self.credits = credits
-    self.season_availability = season_availability
+    def __init__ (self,  code, name,credits, prereqs=[], coreqs=[], season_availability=[FALL, WINTER]):
+        self.name = name
+        self.code = code
+        self.prereqs = prereqs
+        self.coreqs = coreqs
+        self.credits = credits
+        self.season_availability = season_availability
 
-  def __str__(self):
-      return self.code + ": " + self.name
-  code = ""
-  name= ""
-  prereqs = []
-  coreqs = []
-  credits = 3
-  season_availability = [FALL, WINTER]
+    def __str__(self):
+        return self.code + ": " + self.name
+
+    def to_jsonable(self):
+        return {
+            "name": self.name,
+            "code": self.code,
+            "prereqs": self.prereqs,
+            "coreqs": self.coreqs,
+            "credits": self.credits,
+            "season_availability": self.season_availability
+        }
+        
+
+    code = ""
+    name= ""
+    prereqs = []
+    coreqs = []
+    credits = 3
+    season_availability = [FALL, WINTER]
  
 class Term:
     def __init__ (self, season, year, order, credit_limit = DEFAULT_CREDIT_LIMIT):
@@ -68,6 +83,11 @@ class Term:
 
     def remove_all_courses_w_excep(self, exceptions={}):
         courses_keys = list(self.courses.keys())
+        # for exc in exceptions:
+        #     if exc in self.courses:
+        #         continue
+        #     self.remove_course(exc)
+
         for c in courses_keys:
             if c in exceptions:
                 continue
@@ -94,12 +114,22 @@ class Term:
             total = total + course.credits
         return total
 
+    def to_jsonable(self):
+        courses_jsonable = list(map(lambda c:c.to_jsonable(), self.courses.values()))
+        return {
+            "year": self.year,
+            "season": self.season,
+            "credit_limit": self.credit_limit,
+            "courses": courses_jsonable,
+            "order": self.order,
+        }
+
 class Sequence:
     def __init__ (self, all_courses={}):
         self.all_courses = all_courses.copy()
 
     terms = []
-    all_courses = {}
+    all_courses = dict()
     duration = 15
     start_season = seasons[0]
     start_year = 2019
@@ -206,9 +236,15 @@ class Sequence:
         return True, course.code
 
     def reset_all_terms_w_exceptions (self, exceptions={}):
+
         for t in self.terms:
             t.remove_all_courses_w_excep(exceptions)
 
+
+    def refill_all_terms_standalone(self, terms, locked_courses):
+        courses = get_courses_from_terms(terms)
+        self.reset_all_terms_w_exceptions(exceptions=locked_courses)
+        self.fill_all_terms(courses)
 
 
     def refill_all_terms(self, locked_courses={}):
@@ -275,6 +311,28 @@ class Sequence:
             merged.update(term.courses)
         return merged
 
+    def to_jsonable(self):
+    #     terms = []
+    # all_courses = dict()
+    # duration = 15
+    # start_season = seasons[0]
+    # start_year = 2019
+        terms_jsonable = list(map(lambda t: t.to_jsonable(), self.terms))
+        # print(terms_jsonable)
+        return {
+            "terms": terms_jsonable,
+            # "season": self.season,
+            # "credit_limit": self.credit_limit,
+            # "courses": self.courses,
+            # "order": self.order,
+         }
+
+def get_courses_from_terms(terms):
+    merged={}
+    for term in terms:
+        merged.update(term['courses'])
+    return merged
+
 def course_mapper(course):
     return Course(
         code= course['code'], 
@@ -291,28 +349,44 @@ def get_courses_from_json():
         return functools.reduce(lambda a,c: {**a, c['code']:course_mapper(c)}, data, {})
         
 
-all_courses_raw = get_courses_from_json()
 
-s0 = Sequence()
+def fill_all_terms(self, courses):
+    print("filling up all terms, please wait ...")
+    fail_counter = 0
+    while True:
+        # print('HERE')
+        for term in self.terms:
+            # print(term)
+            # self.place_courses_in_term(courses, term)
+            counter = 0
 
-s0.generate_terms(sepecific_limit = {"Summer2020": 0, "Summer2021":6})
+            while True and counter < NO_OF_RETRIES:
+                # print('GETS HERE', counter)
+                term.remove_all_courses()
+                if self.place_courses_in_term(courses, term):
+                    break
+                counter = counter+1
 
-s0.fill_all_terms(all_courses_raw)
+            # print('GETS HERE', counter)
+            if counter < NO_OF_RETRIES:
+                continue
+            break
+        fail_counter= fail_counter+1
+        if self.are_all_terms_valid() : 
+            break
+        if fail_counter >= NO_OF_FAILURES : 
+            print("WE COULDN'T GENERATE A SEQUENCE WITH ALL YOUR SPECIFIED CRITERIA")
+            break
 
-s0.are_all_courses_valid()
+def generate_sequence(courses=[]):
+    return fill_all_terms(courses)
 
-s0.are_all_terms_valid()
+def shuffle_terms(terms=[], locked_courses={}):
+    s0 = Sequence()
+    s0.refill_all_terms_standalone(terms, locked_courses)
+    print("================= AFTER REFILL =======================")
+    for _term in s0.terms:
+        print(_term)
 
-print('can_all_terms_be_filled?: ', s0.can_all_terms_be_filled())
-
-print("=================BEFORE REFILL=======================")
-for _term in s0.terms:
-    print(_term)
-
-# for i in range(5):
-#     s0.refill_all_terms({"MATH212":"", "MATH201":"", "MATH202":""})
-#     # s0.refill_all_terms()
-
-#     print("================= AFTER REFILL "+str(i)+" =======================")
-#     for _term in s0.terms:
-#         print(_term)
+if __name__ == '__main__':
+    generate_sequence()

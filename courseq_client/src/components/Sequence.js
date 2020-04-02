@@ -58,7 +58,7 @@ const Sequence = props => {
     <DragDropContext onDragEnd={onDragEnd}>
       {/* <SequenceCtr> */}
       {Object.entries(terms).map(([t, c], i) => (
-        <Term children={t} courses={c} />
+        <Term key={i} children={t} courses={c} />
       ))}
     </DragDropContext>
   );

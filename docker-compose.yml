@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+  pg:
+    container_name: pg
+    image: postgres
+    environment:
+      POSTGRES_USER: me
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      # - postgresql_node_db:/var/lib/postgresql/data
+      - ./pgdb:/var/lib/postgresql/data
+  client:
+    container_name: client
+    build: ./courseq_client
+    # command: npm run start:dev
+    env_file:
+      - .env
+    environment:
+      - REACT_APP_PORT=${REACT_APP_PORT}
+      # - REACT_APP_API_ENDPOINT=http://localhost:${SERVER_PORT}/
+      - REACT_APP_API_ENDPOINT=http://localhost:${SERVER_PORT}/
+    expose:
+      - ${REACT_APP_PORT}
+    ports:
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+      # for debugging purposes and running the client manually
+      - 3000:3000
+    volumes:
+      - /usr/src/app/node_modules
+      - /usr/src/app/build
+      - ./courseq_client:/usr/src/app
+    depends_on:
+      - ns
+  ns:
+    container_name: ns
+    build:
+      context: ./node_server
+    command: npm run start:dev
+    volumes:
+      - ./node_server:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - pg
+    env_file:
+      - .env
+    environment:
+      DB_USER: me
+      DB_PASSWORD: password
+      DB_SCHEMA: postgres
+      DB_HOST: pg
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+volumes:
+  courseq_db:
